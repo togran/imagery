@@ -48,8 +48,8 @@ jobs:
           DST="ghcr.io/${{ github.repository_owner }}/alpine:latest"
           docker buildx imagetools create --tag "$DST" "$SRC"
 
-          SRC_DIGEST="$(docker buildx imagetools inspect --format '{{.manifest.digest}}' "$SRC")"
-          DST_DIGEST="$(docker buildx imagetools inspect --format '{{.manifest.digest}}' "$DST")"
+          SRC_DIGEST="$(docker buildx imagetools inspect --format '{{.Manifest.Digest}}' "$SRC")"
+          DST_DIGEST="$(docker buildx imagetools inspect --format '{{.Manifest.Digest}}' "$DST")"
           echo "SRC digest: $SRC_DIGEST"
           echo "DST digest: $DST_DIGEST"
           test "$SRC_DIGEST" = "$DST_DIGEST"
